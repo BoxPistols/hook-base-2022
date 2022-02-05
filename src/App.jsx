@@ -32,8 +32,22 @@ const App = () => {
         //  add Patam & OverRive Array Param
         const newItems = [...items, newItem]
         setItems(newItems)
-        setInputValue('')
+        inputValue('')
     }
+
+    //  get index
+    const habdleQuentityIncrease = (index) => {
+        /* alert(index) */
+        const newItems = [...items]
+        newItems[index].quantity++
+        setItems(newItems)
+    }
+    const habdleQuentityDecrease = (index) => {
+        const newItems = [...items]
+        newItems[index].quantity--
+        setItems(newItems)
+    }
+
     return (
         <div className='app-background'>
             <div className='main-container'>
@@ -69,11 +83,21 @@ const App = () => {
                                 )}
                             </div>
                             <div className='quantity'>
-                                <button>
+                                <button
+                                    onClick={() =>
+                                        habdleQuentityDecrease(index)
+                                    }
+                                >
                                     <FontAwesomeIcon icon={faChevronLeft} />
                                 </button>
+
                                 <span> {item.quantity} </span>
-                                <button>
+
+                                <button
+                                    onClick={() =>
+                                        habdleQuentityIncrease(index)
+                                    }
+                                >
                                     <FontAwesomeIcon icon={faChevronRight} />
                                 </button>
                             </div>
