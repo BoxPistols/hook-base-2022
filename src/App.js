@@ -17,15 +17,37 @@ const App = () => {
         { itemName: 'item 3', quantity: 2, isSelected: false },
     ])
 
+    // input value param
+    const [inputValue, setInputValue] = useState('')
+
+    // Add Plus+ item Event
+    const handleAddButtonClick = () => {
+        const newItem = {
+            itemName: inputValue,
+            quantity: 12,
+            isSelected: false,
+        }
+        console.log('xxx')
+        // for const [items, setItems] = useState([
+        //  add Patam & OverRive Array Param
+        const newItems = [...items, newItem]
+        setItems(newItems)
+        setInputValue('')
+    }
     return (
         <div className='app-background'>
             <div className='main-container'>
                 <div className='add-item-box'>
                     <input
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
                         className='add-item-input'
                         placeholder='Add an item...'
                     />
-                    <FontAwesomeIcon icon={faPlus} />
+                    <FontAwesomeIcon
+                        icon={faPlus}
+                        onClick={handleAddButtonClick}
+                    />
                 </div>
                 {/* Map */}
                 <div className='item-list'>
